@@ -1,10 +1,11 @@
 <template>
-  <section class="row justify-center full-width">
+  <section>
     <div class="container row align-items justify-between">
-      <span class="text-white name-header q-mt-xl">jasoncosta</span>
-      <UiBoxPerfil />
-      
-      <div class="picture-perfil">
+      <div class="info-left q-mt-xl">
+        <span class="text-white name-header">jasoncosta</span>
+        <UiBoxPerfil style="margin-top: 157px;"/>
+      </div>          
+      <div class="info-right">
         <div class="row justify-end q-pt-xl q-pr-lg">
           <div class="list-icons">
             <q-icon :name="`img: ${icons.github.icon}`" />
@@ -45,8 +46,14 @@ const icons = {
 </script>
 
 <style lang="scss">
+
+section {
+  max-width: 1440px;
+}
+
 .container {
-  width: 80%;
+  width: 100%;
+  position: relative;
 }
 
 .name-header {
@@ -65,12 +72,19 @@ const icons = {
   justify-content: space-between;
 }
 
-.picture-perfil {
+.info-left {
+  z-index: 2;
+}
+
+.info-right {
   width: 445px;
   height: 720px;
   background-color: #242424;
   background: url("../core/assets/icon/profile.png") lightgray 0px 0px / 100%
     100% no-repeat;
+  z-index: 1;  
+  position: relative;
+  left: -40px;
 }
 
 .q-icon {

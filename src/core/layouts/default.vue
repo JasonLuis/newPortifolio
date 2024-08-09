@@ -1,10 +1,10 @@
 <template>
   <q-layout view="hHh lpR fFf" class="bg-dark-navy">
-    <q-page-container class="window-height pa-5">
+    <q-page-container>
       <!-- <q-img class="decor-left" :src="img"/> -->
        <div class="decor-left"></div>
 
-       <div class="window-height">
+       <div class="row justify-center">
           <nuxt-page></nuxt-page>
        </div>
     </q-page-container>
@@ -28,8 +28,6 @@ const img = computed(() => new URL(`../assets/icon/pattern-rings.svg`, import.me
   position: absolute;
   width: 100%;
   height: 100vh;
-  //top: 133px
-  // z-index: -20;
   background-position: -100px 166px;
 }
 </style>
