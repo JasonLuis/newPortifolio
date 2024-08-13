@@ -12,8 +12,10 @@
     <p class="text">
       Based in Brazil, I'm a front-end developer passionate about creating accessible web applications that users love.
     </p>
-    <div style="margin-top: 66px;">
+    <div class="row justify-between items-center q-mt-md">
       <UiButtonContacMe />
+
+      <q-icon :name="`img: ${iconCircle}`" />
     </div>
     
   </div>
@@ -21,6 +23,8 @@
 
 <script setup lang="ts">
 import UiButtonContacMe from "./ButtonContactMe.vue";
+
+const iconCircle = new URL("../assets/icon/pattern-circle.svg", import.meta.url);
 </script>
 
 <style scoped lang="scss">
@@ -60,5 +64,11 @@ hr {
     border: 0px;
     margin-top: -10px;
     margin-right: 70px;
+}
+
+.q-icon {
+  width: 129px;
+  height: 129px;
+  left: 20px;
 }
 </style>

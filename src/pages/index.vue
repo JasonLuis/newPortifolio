@@ -1,15 +1,20 @@
 <template>
-  <section>
-    <div class="container row align-items justify-between">
-      <div class="info-left q-mt-xl">
-        <span class="text-white name-header">jasoncosta</span>
-        <UiBoxPerfil style="margin-top: 157px;"/>
-      </div>          
-      <div class="info-right">
-        <UiImageProfile />
+  <main class="q-px-auto">
+    <section class="">
+      <div class="container row align-items justify-between">
+        <div class="info-left q-mt-xl">
+          <span class="text-white name-header">jasoncosta</span>
+          <UiBoxPerfil style="margin-top: 157px;"/>
+        </div>          
+        <div class="info-right">
+          <UiImageProfile />
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <hr style="margin-top: 102px;" />
+  </main>
+  
 </template>
 
 <script setup lang="ts">
@@ -21,12 +26,13 @@ import UiImageProfile from "~~/src/core/components/ImagePerfil.vue"
 <style lang="scss">
 
 section {
-  max-width: 1440px;
+  max-width: 1112px;
 }
 
 .container {
   width: 100%;
   position: relative;
+  flex-wrap: nowrap;
 }
 
 .name-header {
