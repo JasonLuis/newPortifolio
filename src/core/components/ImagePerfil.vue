@@ -37,7 +37,7 @@ const icons = {
 
 <style scoped lang="scss">
 .perfil {
-  width: 446px;
+  width: 445px;
   height: 720px;
   background-color: #242424;
   background: url("../assets/icon/profile.png") lightgray 0px 0px / 100%
