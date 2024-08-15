@@ -17,9 +17,10 @@
 
     <section>
       <div class="row align-items justify-between">
-        <div class="col-6 col-sm-4 q-mt-xl" v-for="(skil, count) in skils">
-          <BoxTechnologiesExpirience :exprience="skil.exprience" :technologie="skil.technologie" :key="count"/>
-        </div>
+        <!-- <div class="col-6 col-sm-4 q-mt-xl" v-for="(skil, count) in skils">
+          
+        </div> -->
+        <UiCardTechlogiesExpirience />
       </div>
     </section>
   </main>
@@ -28,11 +29,60 @@
 <script setup lang="ts">
 import UiBoxPerfil from "~~/src/core/components/BoxPerfil.vue";
 import UiImageProfile from "~~/src/core/components/ImagePerfil.vue";
+import UiCardTechlogiesExpirience from "~~/src/core/components/CardTechlogiesExpirience.vue";
 
 const skils = [
   {
     technologie: "HTML",
+    exprience: 11
+  },
+  {
+    technologie: "CSS",
+    exprience: 11
+  },
+  {
+    technologie: "Javascript",
     exprience: 4
+  },
+  {
+    technologie: "Typescript",
+    exprience: 4
+  },
+  {
+    technologie: "VueJS",
+    exprience: 3
+  },
+  {
+    technologie: "Java",
+    exprience: 2
+  },
+  {
+    technologie: "Kotlin",
+    exprience: 1
+  },
+  {
+    technologie: "Spring Boot",
+    exprience: 2
+  },
+  {
+    technologie: "Python",
+    exprience: 1
+  },
+  {
+    technologie: "OpenCV",
+    exprience: 1
+  },
+  {
+    technologie: "C#",
+    exprience: 1
+  },
+  {
+    technologie: "Aps.NET",
+    exprience: 1
+  },
+  {
+    technologie: "Blazor",
+    exprience: 1
   },
 ]
 

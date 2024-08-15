@@ -6,9 +6,6 @@
 </template>
 
 <script setup lang="ts">
-
-
-
   const props = defineProps<{
     technologie: string,
     exprience: number,
@@ -40,7 +37,7 @@ h1 {
 span {
     @extend %text;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 200;
     line-height: 28px;
 }
 </style>
