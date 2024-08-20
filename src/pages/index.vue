@@ -1,5 +1,6 @@
 <template>
   <div class="decor-left"></div>
+  <div class="decor-right"></div>
   <main class="q-px-auto">
     <section>
       <div class="container row align-items justify-between">
@@ -15,7 +16,7 @@
     <!-- <div class="decor-right"></div> -->
     <hr style="margin-top: 102px" />
 
-    <section>
+    <section class="row">
       <div class="row align-items justify-between">
         <!-- <div class="col-6 col-sm-4 q-mt-xl" v-for="(skil, count) in skils">
           
@@ -23,7 +24,9 @@
         <UiCardTechlogiesExpirience />
       </div>
     </section>
+    
   </main>
+  
 </template>
 
 <script setup lang="ts">
@@ -89,6 +92,14 @@ const skils = [
 </script>
 
 <style lang="scss">
+
+%decor {
+  background-image: url("../core/assets/icon/pattern-rings.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 100%;
+}
+
 section {
   max-width: 1112px;
 }
@@ -118,11 +129,15 @@ section {
 }
 
 .decor-left {
-  background-image: url("../core/assets/icon/pattern-rings.svg");
-  background-repeat: no-repeat;
-  position: absolute;
-  width: 100%;
+  @extend %decor;
   height: 100vh;
   background-position: -100px 175px;
+}
+
+.decor-right {
+  @extend %decor;
+  min-height: 100vh;
+  height: 100%;
+  background-position: calc(100% + 100px) 1077px;
 }
 </style>
