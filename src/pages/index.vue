@@ -13,18 +13,25 @@
         </div>
       </div>
     </section>
-    <!-- <div class="decor-right"></div> -->
     <hr style="margin-top: 102px" />
 
     <section class="row">
       <div class="row align-items justify-between">
-        <!-- <div class="col-6 col-sm-4 q-mt-xl" v-for="(skil, count) in skils">
-          
-        </div> -->
         <UiCardTechlogiesExpirience />
       </div>
     </section>
+  
     
+    <section class="row" style="margin-top: 120px;">
+      <div class="row items-center justify-between" style="width: 100%;">
+        <p class="title">Projects</p>
+        <UiButtonContacMe />
+      </div>
+
+      <div class="row">
+        <UiCardProjects />
+      </div>
+    </section>
   </main>
   
 </template>
@@ -33,6 +40,8 @@
 import UiBoxPerfil from "~~/src/core/components/BoxPerfil.vue";
 import UiImageProfile from "~~/src/core/components/ImagePerfil.vue";
 import UiCardTechlogiesExpirience from "~~/src/core/components/CardTechlogiesExpirience.vue";
+import UiButtonContacMe from "~~/src/core/components/ButtonContactMe.vue";
+import UiCardProjects from "~~/src/core/components/CardProjects.vue";
 
 const skils = [
   {
@@ -91,7 +100,14 @@ const skils = [
 
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+
+%text {
+  color: var(--White, #FFF);
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: "Space Grotesk";
+}
+
 
 %decor {
   background-image: url("../core/assets/icon/pattern-rings.svg");
@@ -132,12 +148,23 @@ section {
   @extend %decor;
   height: 100vh;
   background-position: -100px 175px;
+  pointer-events: none;
 }
 
 .decor-right {
   @extend %decor;
   min-height: 100vh;
   height: 100%;
-  background-position: calc(100% + 100px) 1077px;
+  background-position: calc(100% + 200px) 1077px;
+  pointer-events: none;
+}
+
+.title {
+  @extend %text;
+  font-size: 88px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 88px;
+  letter-spacing: -2.5px;
 }
 </style>
