@@ -28,8 +28,15 @@
         <UiButtonContacMe />
       </div>
 
-      <div class="row">
-        <UiCardProjects />
+      <div class="row q-mt-xl" >
+        <UiCardProjects 
+          v-for="(project, index) in projects"
+          :name="project.name"
+          :img="project.img"
+          :tecnologies="project.tecnologies"
+          :links="project.links"
+          :key="index" 
+        />
       </div>
     </section>
   </main>
@@ -42,6 +49,7 @@ import UiImageProfile from "~~/src/core/components/ImagePerfil.vue";
 import UiCardTechlogiesExpirience from "~~/src/core/components/CardTechlogiesExpirience.vue";
 import UiButtonContacMe from "~~/src/core/components/ButtonContactMe.vue";
 import UiCardProjects from "~~/src/core/components/CardProjects.vue";
+import type { IProject } from "~~/server/Projects/IProjects";
 
 const skils = [
   {
@@ -97,6 +105,24 @@ const skils = [
     exprience: 1
   },
 ]
+
+const projects:Array<IProject> = [
+  {
+    img: new URL("../core/assets/images/projeto1.png", import.meta.url).toString(),
+    name: "Design Portifolio",
+    tecnologies: [
+      "HTML",
+      "CSS",
+      "Javascript"
+    ],
+    links: [
+      {
+        github: "Github",
+        url: "https://github.com/jasoncosta00"
+      }
+    ]
+  }
+];
 
 </script>
 
