@@ -1,46 +1,50 @@
 <template>
-  <div class="decor-left"></div>
-  <div class="decor-right"></div>
-  <main class="q-px-auto">
-    <section>
-      <div class="container row align-items justify-between">
+  <!-- <div class="decor-left"></div>
+  <div class="decor-right"></div> -->
+  <main class="full-width">
+    <section class="row justify-center">
+      <div class="col-10 align-items justify-center">
         <div class="info-left q-mt-xl">
-          <span class="text-white name-header">jasoncosta</span>
-          <UiBoxPerfil style="margin-top: 157px" />
-        </div>
-        <div class="info-right">
-          <UiImageProfile />
+          <div>
+            <span class="text-white name-header">jasoncosta</span>
+            <UiBoxPerfil style="margin-top: 157px" />
+          </div>
+          
+          
+          <div class="profile">
+            <UiImageProfile />
+          </div>
+          
         </div>
       </div>
     </section>
+    <!--
     <hr style="margin-top: 102px" />
 
-    <section class="row">
+     <section class="row">
       <div class="row align-items justify-between">
         <UiCardTechlogiesExpirience />
       </div>
     </section>
-  
-    
-    <section class="row" style="margin-top: 120px;">
-      <div class="row items-center justify-between" style="width: 100%;">
+
+    <section class="row" style="margin-top: 120px">
+      <div class="row items-center justify-between" style="width: 100%">
         <p class="title">Projects</p>
         <UiButtonContacMe />
       </div>
 
-      <div class="row q-mt-xl" >
-        <UiCardProjects 
+      <div class="row q-mt-xl">
+        <UiCardProjects
           v-for="(project, index) in projects"
           :name="project.name"
           :img="project.img"
           :tecnologies="project.tecnologies"
-          :links="project.links"
-          :key="index" 
+          :link="project.link"
+          :key="index"
         />
       </div>
-    </section>
+    </section> -->
   </main>
-  
 </template>
 
 <script setup lang="ts">
@@ -54,101 +58,66 @@ import type { IProject } from "~~/server/Projects/IProjects";
 const skils = [
   {
     technologie: "HTML",
-    exprience: 11
+    exprience: 11,
   },
   {
     technologie: "CSS",
-    exprience: 11
+    exprience: 11,
   },
   {
     technologie: "Javascript",
-    exprience: 4
+    exprience: 4,
   },
   {
     technologie: "Typescript",
-    exprience: 4
+    exprience: 4,
   },
   {
     technologie: "VueJS",
-    exprience: 3
-  },
-  {
-    technologie: "Java",
-    exprience: 2
-  },
-  {
-    technologie: "Kotlin",
-    exprience: 1
-  },
-  {
-    technologie: "Spring Boot",
-    exprience: 2
-  },
-  {
-    technologie: "Python",
-    exprience: 1
-  },
-  {
-    technologie: "OpenCV",
-    exprience: 1
+    exprience: 3,
   },
   {
     technologie: "C#",
-    exprience: 1
+    exprience: 1,
   },
   {
-    technologie: "Aps.NET",
-    exprience: 1
+    technologie: "ASP.NET",
+    exprience: 1,
   },
   {
     technologie: "Blazor",
-    exprience: 1
+    exprience: 1,
   },
-]
-
-const projects:Array<IProject> = [
-  {
-    img: new URL("../core/assets/images/projeto1.png", import.meta.url).toString(),
-    name: "Design Portifolio",
-    tecnologies: [
-      "HTML",
-      "CSS",
-      "Javascript"
-    ],
-    links: [
-      {
-        github: "Github",
-        url: "https://github.com/jasoncosta00"
-      }
-    ]
-  }
 ];
 
+const projects: Array<IProject> = [
+  {
+    img: new URL(
+      "../core/assets/images/projeto1.png",
+      import.meta.url
+    ).toString(),
+    name: "Design Portifolio",
+    tecnologies: ["HTML", "CSS", "Javascript"],
+    link: {
+      github: "Github",
+      url: "https://github.com/jasoncosta00",
+    },
+  },
+];
 </script>
 
 <style scoped lang="scss">
-
 %text {
-  color: var(--White, #FFF);
-  font-feature-settings: 'liga' off, 'clig' off;
+  color: var(--White, #fff);
+  font-feature-settings: "liga" off, "clig" off;
   font-family: "Space Grotesk";
 }
-
 
 %decor {
   background-image: url("../core/assets/icon/pattern-rings.svg");
   background-repeat: no-repeat;
   position: absolute;
   width: 100%;
-}
-
-section {
-  max-width: 1112px;
-}
-
-.container {
-  width: 100%;
-  flex-wrap: nowrap;
 }
 
 .name-header {
@@ -161,13 +130,15 @@ section {
 }
 
 .info-left {
-  z-index: 2;
+  position: absolute;
+  display: flex;
 }
 
-.info-right {
-  z-index: 1;
+.profile {
   position: relative;
-  left: -40px;
+  z-index: 1;
+  right: 50px;
+  top: -48px;
 }
 
 .decor-left {

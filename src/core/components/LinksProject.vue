@@ -13,6 +13,14 @@
 
 </template>
 
+<script setup lang="ts">
+
+const props = defineProps<{
+  linkProject: string | undefined;
+  linkGithub: string | undefined;
+}>();
+</script>
+
 <style scoped lang="scss">
 a {
   width: auto;

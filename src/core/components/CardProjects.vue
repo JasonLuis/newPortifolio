@@ -10,6 +10,8 @@
 
     <transition name="fade" mode="out-in">
       <UiLinksProject
+        :link-github="link.github"
+        :link-project="link.url"
         v-if="isHovered"
         class="overlay-button"
         key="links-project"
@@ -33,10 +35,10 @@ const props = defineProps<{
   img: string;
   name: string;
   tecnologies: Array<string>;
-  links: Array<{
+  link: {
     github: string;
     url: string;
-  }>;
+  };
 }>();
 
 

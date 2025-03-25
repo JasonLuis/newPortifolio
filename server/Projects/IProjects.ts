@@ -2,7 +2,7 @@ export interface IProject {
   img: string;
   name: string;
   tecnologies: Array<string>;
-  links: Array<ILink>;
+  link: ILink;
 }
 
 export interface ILink {

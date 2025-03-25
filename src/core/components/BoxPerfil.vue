@@ -45,6 +45,8 @@ const iconCircle = new URL("../assets/icon/pattern-circle.svg", import.meta.url)
   font-weight: 700;
   line-height: 88px; /* 100% */
   letter-spacing: -2.5px;
+  position: relative;
+  z-index: 2;
 }
 
 .text {
@@ -58,7 +60,7 @@ const iconCircle = new URL("../assets/icon/pattern-circle.svg", import.meta.url)
 }
 
 hr {
-    width: 492px;
+    width: 70%;
     height: 6px;
     background: var(--Green, #4EE1A0);
     border: 0px;
@@ -70,5 +72,8 @@ hr {
   width: 129px;
   height: 129px;
   left: 20px;
+  z-index: 2;
 }
+
+
 </style>
