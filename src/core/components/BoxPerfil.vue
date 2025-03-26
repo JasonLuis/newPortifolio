@@ -1,18 +1,16 @@
 <template>
   <div class="box">
-    <h1 class="title q-ma-none"> Nice to meet you! </h1>
-    <h1 class="title q-ma-none">
+    <h1 class="title q-ma-none"> Nice to meet you! 
         I'm 
-        <span>
+        <span class="highlight">
             Jason Costa.
-            <hr />
         </span>
     </h1>
 
     <p class="text">
       Based in Brazil, I'm a front-end developer passionate about creating accessible web applications that users love.
     </p>
-    <div class="row justify-between items-center q-mt-md">
+    <div class="row justify-between items-center q-mt-md q-pr-lg">
       <UiButtonContacMe />
 
       <q-icon :name="`img: ${iconCircle}`" />
@@ -34,7 +32,7 @@ const iconCircle = new URL("../assets/icon/pattern-circle.svg", import.meta.url)
   font-family: "Space Grotesk";
 }
 .box {
-  width: 706px;
+  width: 100%;
   height: 303px;
 }
 
@@ -59,19 +57,14 @@ const iconCircle = new URL("../assets/icon/pattern-circle.svg", import.meta.url)
   margin-top: 43px;
 }
 
-hr {
-    width: 70%;
-    height: 6px;
-    background: var(--Green, #4EE1A0);
-    border: 0px;
-    margin-top: -10px;
-    margin-right: 70px;
+.highlight {
+    text-decoration: underline;
+    text-decoration-color: var(--Green, #4EE1A0);
 }
 
 .q-icon {
   width: 129px;
   height: 129px;
-  left: 20px;
   z-index: 2;
 }
 

@@ -1,21 +1,24 @@
 <template>
-  <!-- <div class="decor-left"></div>
-  <div class="decor-right"></div> -->
-  <main class="full-width">
+  <div class="decor-left"></div>
+  <div class="decor-right"></div>
+  <main class="full-width full-height">
     <section class="row justify-center">
-      <div class="col-10 align-items justify-center">
-        <div class="info-left q-mt-xl">
-          <div>
+      <div class="container row col-md-10 col-lg-10">
+        
+          <div class="info-perfil col-8">
             <span class="text-white name-header">jasoncosta</span>
             <UiBoxPerfil style="margin-top: 157px" />
           </div>
           
+          <div class="col-4">
+
+          </div>
           
           <div class="profile">
             <UiImageProfile />
           </div>
           
-        </div>
+        
       </div>
     </section>
     <!--
@@ -129,16 +132,21 @@ const projects: Array<IProject> = [
   letter-spacing: -0.444px;
 }
 
-.info-left {
-  position: absolute;
-  display: flex;
+.container {
+  position: relative;
+  max-width: 1110px;
+}
+
+.info-perfil {
+  flex: 1;
+  position: relative;
+  z-index: 2;
 }
 
 .profile {
-  position: relative;
+  position: absolute;
   z-index: 1;
-  right: 50px;
-  top: -48px;
+  right: 18px;
 }
 
 .decor-left {
@@ -163,5 +171,15 @@ const projects: Array<IProject> = [
   font-weight: 700;
   line-height: 88px;
   letter-spacing: -2.5px;
+}
+
+@media (max-width: $breakpoint-md) {
+  .container {
+    width: 100%;
+  }
+
+  .profile {
+    right: 0px;
+  }
 }
 </style>

@@ -1,13 +1,13 @@
 <template>
   <div class="perfil">
-    <div class="row justify-end q-pt-xl q-pr-lg">
+    <!-- <div class="row justify-end q-pt-xl q-pr-lg">
       <div class="list-icons">
         <q-icon :name="`img: ${icons.github.icon}`" />
         <q-icon :name="`img: ${icons.frontMentor.icon}`" />
         <q-icon :name="`img: ${icons.linkedin.icon}`" />
         <q-icon :name="`img: ${icons.twitter.icon}`" />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
