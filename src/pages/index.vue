@@ -3,11 +3,11 @@
   <div class="decor-right"></div>
   <main class="full-width full-height">
     <section class="row justify-center">
-      <div class="container row col-12 col-md-10">
+      <div class="container row col-12 col-md-8">
 
         <div class="info-perfil col-12 col-sm-8">
           <p class="text-white name-header q-mt-xl">jasoncosta</p>
-          <div :class="`${$q.screen.lt.sm ? 'full-width row justify-center' : 'hidden'}`">
+          <div :class="`${$q.screen.lt.sm ? 'full-width row justify-center relative-position' : 'hidden'}`">
             <UiImageProfile />
           </div>
           <UiBoxPerfil class="mt-personalizado" />
@@ -58,10 +58,6 @@ import UiCardTechlogiesExpirience from "~~/src/core/components/CardTechlogiesExp
 import UiButtonContacMe from "~~/src/core/components/ButtonContactMe.vue";
 import UiCardProjects from "~~/src/core/components/CardProjects.vue";
 import type { IProject } from "~~/server/Projects/IProjects";
-import { useQuasar } from 'quasar'
-
-const $q = useQuasar();
-// $q.screen.setSizes({ sm: 300, md: 500, lg: 1000, xl: 2000 })
 
 
 const skils = [
@@ -192,6 +188,7 @@ const projects: Array<IProject> = [
 
 
 @media (max-width: $breakpoint-xs) {
+  
   .container {
     padding-left: 0px;
   }
@@ -207,6 +204,15 @@ const projects: Array<IProject> = [
 
   .mt-personalizado {
     margin-top: 40px;
+  }
+
+  .decor-left {
+    background-position: -220px 175px;
+  }
+
+  .info-perfil {
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }
 </style>

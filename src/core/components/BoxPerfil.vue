@@ -15,7 +15,7 @@
       :class="`${$q.screen.xs ? 'justify-center' : 'justify-start'}`"
     >
       <UiButtonContacMe />
-      <!-- <q-icon :name="`img: ${iconCircle}`" /> -->
+      <!--  -->
     </div>
     
   </div>
@@ -24,7 +24,7 @@
 <script setup lang="ts">
 import UiButtonContacMe from "./ButtonContactMe.vue";
 
-const iconCircle = new URL("../assets/icon/pattern-circle.svg", import.meta.url);
+
 </script>
 
 <style scoped lang="scss">
