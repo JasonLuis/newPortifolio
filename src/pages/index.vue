@@ -3,22 +3,23 @@
   <div class="decor-right"></div>
   <main class="full-width full-height">
     <section class="row justify-center">
-      <div class="container row col-md-10 col-lg-10">
+      <div class="container row col-10">
         
-          <div class="info-perfil col-8">
-            <span class="text-white name-header">jasoncosta</span>
-            <UiBoxPerfil style="margin-top: 157px" />
+          <div class="info-perfil col-12 col-md-8">
+            <p class="text-white name-header q-mt-xl">jasoncosta</p>
+            <div :class="`${$q.screen.lt.md ? 'full-width row justify-center' : 'hidden'}`">
+              <UiImageProfile />
+            </div>
+            <UiBoxPerfil :style="`${$q.screen.lt.md ? 'margin-top: 40px;' : 'margin-top: 157px'}`" />
           </div>
           
-          <div class="col-4">
-
+          <div class="col-12 col-md-4">
+            
           </div>
           
           <div class="profile">
             <UiImageProfile />
           </div>
-          
-        
       </div>
     </section>
     <!--
@@ -124,7 +125,7 @@ const projects: Array<IProject> = [
 }
 
 .name-header {
-  font-family: "Space Grotesk";
+  @extend %text;
   font-size: 32px;
   font-style: normal;
   font-weight: 700;
@@ -137,16 +138,10 @@ const projects: Array<IProject> = [
   max-width: 1110px;
 }
 
-.info-perfil {
-  flex: 1;
-  position: relative;
-  z-index: 2;
-}
-
 .profile {
   position: absolute;
   z-index: 1;
-  right: 18px;
+  right: 12px;
 }
 
 .decor-left {
@@ -173,13 +168,29 @@ const projects: Array<IProject> = [
   letter-spacing: -2.5px;
 }
 
-@media (max-width: $breakpoint-md) {
+@media (max-width: $breakpoint-sm) {
   .container {
     width: 100%;
+    padding-left: 32px;
   }
 
   .profile {
     right: 0px;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .container {
+    padding-left: 0px;
+  }
+
+  .profile {
+    display: none;
+  }
+
+  .name-header {
+    font-size: 24px;
+    text-align: center;
   }
 }
 </style>

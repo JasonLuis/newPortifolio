@@ -10,10 +10,14 @@
     <p class="text">
       Based in Brazil, I'm a front-end developer passionate about creating accessible web applications that users love.
     </p>
-    <div class="row justify-between items-center q-mt-md q-pr-lg">
+    <div 
+      class="row items-center q-mt-md q-pr-lg"
+      :class="`${$q.screen.lt.md ? 'justify-center' : 'justify-start'}`"
+    >
+
       <UiButtonContacMe />
 
-      <q-icon :name="`img: ${iconCircle}`" />
+      <!-- <q-icon :name="`img: ${iconCircle}`" /> -->
     </div>
     
   </div>
@@ -55,6 +59,7 @@ const iconCircle = new URL("../assets/icon/pattern-circle.svg", import.meta.url)
   line-height: 28px;
   max-width: 445px;
   margin-top: 43px;
+  z-index: 2;
 }
 
 .highlight {
@@ -68,5 +73,15 @@ const iconCircle = new URL("../assets/icon/pattern-circle.svg", import.meta.url)
   z-index: 2;
 }
 
-
+@media (max-width: $breakpoint-sm) {
+  .title {
+    text-align: center;
+    font-size: 40px;
+    line-height: 40px;
+  }
+  .text {
+    text-align: center;
+    max-width: 100%;
+  }
+} 
 </style>
