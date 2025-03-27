@@ -3,23 +3,23 @@
   <div class="decor-right"></div>
   <main class="full-width full-height">
     <section class="row justify-center">
-      <div class="container row col-10">
-        
-          <div class="info-perfil col-12 col-md-8">
-            <p class="text-white name-header q-mt-xl">jasoncosta</p>
-            <div :class="`${$q.screen.lt.md ? 'full-width row justify-center' : 'hidden'}`">
-              <UiImageProfile />
-            </div>
-            <UiBoxPerfil :style="`${$q.screen.lt.md ? 'margin-top: 40px;' : 'margin-top: 157px'}`" />
-          </div>
-          
-          <div class="col-12 col-md-4">
-            
-          </div>
-          
-          <div class="profile">
+      <div class="container row col-12 col-md-10">
+
+        <div class="info-perfil col-12 col-sm-8">
+          <p class="text-white name-header q-mt-xl">jasoncosta</p>
+          <div :class="`${$q.screen.lt.sm ? 'full-width row justify-center' : 'hidden'}`">
             <UiImageProfile />
           </div>
+          <UiBoxPerfil class="mt-personalizado" />
+        </div>
+
+        <div class="col-12 col-sm-4 col-md-">
+
+        </div>
+
+        <div class="profile">
+          <UiImageProfile />
+        </div>
       </div>
     </section>
     <!--
@@ -58,6 +58,11 @@ import UiCardTechlogiesExpirience from "~~/src/core/components/CardTechlogiesExp
 import UiButtonContacMe from "~~/src/core/components/ButtonContactMe.vue";
 import UiCardProjects from "~~/src/core/components/CardProjects.vue";
 import type { IProject } from "~~/server/Projects/IProjects";
+import { useQuasar } from 'quasar'
+
+const $q = useQuasar();
+// $q.screen.setSizes({ sm: 300, md: 500, lg: 1000, xl: 2000 })
+
 
 const skils = [
   {
@@ -168,10 +173,16 @@ const projects: Array<IProject> = [
   letter-spacing: -2.5px;
 }
 
-@media (max-width: $breakpoint-sm) {
-  .container {
-    width: 100%;
+.mt-personalizado {
+  margin-top: 157px;
+}
+
+@media (max-width: $breakpoint-md) {
+  .info-perfil {
     padding-left: 32px;
+  }
+  .mt-personalizado {
+    margin-top: 90px;
   }
 
   .profile {
@@ -179,7 +190,8 @@ const projects: Array<IProject> = [
   }
 }
 
-@media (max-width: $breakpoint-sm) {
+
+@media (max-width: $breakpoint-xs) {
   .container {
     padding-left: 0px;
   }
@@ -191,6 +203,10 @@ const projects: Array<IProject> = [
   .name-header {
     font-size: 24px;
     text-align: center;
+  }
+
+  .mt-personalizado {
+    margin-top: 40px;
   }
 }
 </style>

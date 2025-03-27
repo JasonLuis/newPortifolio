@@ -1,7 +1,7 @@
 <template>
   <div class="perfil">
     <div class="row justify-end"
-     :class="`${$q.screen.lt.md ? '' : 'q-pr-lg q-pt-xl'}`"
+     :class="`${$q.screen.xs ? '' : 'q-pr-lg q-pt-xl'}`"
     >
       <div class="list-icons">
         <q-icon :name="`img: ${icons.github.icon}`" />
@@ -57,7 +57,14 @@ const icons = {
   width: 25px;
 }
 
-@media (max-width: $breakpoint-sm) {
+@media (max-width: $breakpoint-md) {
+  .perfil {
+    width: 350px;
+    height: 600px;
+  }
+}
+
+@media (max-width: $breakpoint-xs) {
   .perfil {
     width: 174px;
     height: 350px;
