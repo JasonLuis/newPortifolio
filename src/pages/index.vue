@@ -3,8 +3,7 @@
   <div class="decor-right"></div>
   <main class="full-width full-height">
     <section class="row justify-center">
-      <div class="container row col-12 col-md-8">
-
+      <div class="container min-height-container row col-12 col-md-8">
         <div class="info-perfil col-12 col-sm-8">
           <p class="text-white name-header q-mt-xl">jasoncosta</p>
           <div :class="`${$q.screen.lt.sm ? 'full-width row justify-center relative-position' : 'hidden'}`">
@@ -13,7 +12,7 @@
           <UiBoxPerfil class="mt-personalizado" />
         </div>
 
-        <div class="col-12 col-sm-4 col-md-">
+        <div class="col-12 col-sm-4 col-md-6">
 
         </div>
 
@@ -22,15 +21,23 @@
         </div>
       </div>
     </section>
-    <!--
-    <hr style="margin-top: 102px" />
 
-     <section class="row">
-      <div class="row align-items justify-between">
-        <UiCardTechlogiesExpirience />
+
+    <section class="row justify-center">
+      <div class="col-12 col-md-8">
+        <div class="divisor full-width text-center">
+          <hr class="q-mt-md q-mx-auto" style="max-width: 1110px;" />
+        </div>
+
+
       </div>
-    </section>
 
+      <!-- <div class="col-12 col-md-8 container">
+        <UiCardTechlogiesExpirience />
+      </div> -->
+
+    </section>
+    <!--
     <section class="row" style="margin-top: 120px">
       <div class="row items-center justify-between" style="width: 100%">
         <p class="title">Projects</p>
@@ -139,10 +146,18 @@ const projects: Array<IProject> = [
   max-width: 1110px;
 }
 
+.min-height-container {
+  min-height: 720px;
+}
+
+[class^="min-height-"] {
+  min-height: var(--max-width, 100%);
+}
+
 .profile {
   position: absolute;
   z-index: 1;
-  right: 12px;
+  right: 0px;
 }
 
 .decor-left {
@@ -173,10 +188,12 @@ const projects: Array<IProject> = [
   margin-top: 157px;
 }
 
+.divisor {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 @media (max-width: $breakpoint-md) {
-  .info-perfil {
-    padding-left: 32px;
-  }
   .mt-personalizado {
     margin-top: 90px;
   }
@@ -184,11 +201,27 @@ const projects: Array<IProject> = [
   .profile {
     right: 0px;
   }
+
+  
 }
 
 
+@media (max-width: $breakpoint-sm) {
+
+  .info-perfil {
+    padding-left: 32px;
+  }
+
+  .divisor {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+
+
 @media (max-width: $breakpoint-xs) {
-  
+
   .container {
     padding-left: 0px;
   }
@@ -211,6 +244,11 @@ const projects: Array<IProject> = [
   }
 
   .info-perfil {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .divisor {
     padding-left: 12px;
     padding-right: 12px;
   }

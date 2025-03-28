@@ -35,7 +35,7 @@ import UiButtonContacMe from "./ButtonContactMe.vue";
 }
 .box {
   width: 100%;
-  height: 303px;
+  height: auto;
 }
 
 .title {
