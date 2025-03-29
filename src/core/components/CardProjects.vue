@@ -120,4 +120,11 @@ const img = computed(() => {
 .fade-leave-to {
   opacity: 0;
 }
+
+@media (max-width: $breakpoint-sm) { 
+  .q-card {
+    width: 345px;
+    height: 253px;
+  }
+}
 </style>

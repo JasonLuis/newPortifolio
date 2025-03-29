@@ -12,7 +12,7 @@
           <UiBoxPerfil class="mt-personalizado" />
         </div>
 
-        <div class="col-12 col-sm-4 col-md-6">
+        <div class="col-12 col-sm-4 col-md-6" :class="`${$q.screen.md ? 'hidden' : ''}`">
 
         </div>
 
@@ -23,38 +23,33 @@
     </section>
 
 
-    <section class="row justify-center">
+    <section class="row justify-center q-mt-xl">
       <div class="col-12 col-md-8">
         <div class="divisor full-width text-center">
-          <hr class="q-mt-md q-mx-auto" style="max-width: 1110px;" />
+          <hr style="max-width: 1110px;" />
         </div>
-
-
       </div>
 
-      <!-- <div class="col-12 col-md-8 container">
+      <div class="col-12 col-md-8 container">
         <UiCardTechlogiesExpirience />
-      </div> -->
+      </div>
 
     </section>
-    <!--
-    <section class="row" style="margin-top: 120px">
-      <div class="row items-center justify-between" style="width: 100%">
-        <p class="title">Projects</p>
-        <UiButtonContacMe />
+
+    <section class="row justify-center" style="margin-top: 120px">
+      <div class="col-12 col-md-8 container">
+        <div class="row items-center justify-between q-px-md" style="width: 100%">
+          <p class="title">Projects</p>
+          <UiButtonContacMe />
+        </div>
+
       </div>
 
-      <div class="row q-mt-xl">
-        <UiCardProjects
-          v-for="(project, index) in projects"
-          :name="project.name"
-          :img="project.img"
-          :tecnologies="project.tecnologies"
-          :link="project.link"
-          :key="index"
-        />
+      <div class="col-12 col-md-8 container">
+        <UiCardProjects v-for="(project, index) in projects" :name="project.name" :img="project.img"
+          :tecnologies="project.tecnologies" :link="project.link" :key="index" />
       </div>
-    </section> -->
+    </section>
   </main>
 </template>
 
@@ -202,7 +197,15 @@ const projects: Array<IProject> = [
     right: 0px;
   }
 
-  
+  .min-height-container {
+    min-height: 600px;
+  }
+
+  .title {
+    font-size: 72px;
+    line-height: 72px;
+    letter-spacing: -2.045px;
+  }
 }
 
 

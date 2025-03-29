@@ -48,9 +48,12 @@ const toggleExpand = () => {
 
 <style scoped lang="scss">
 .q-card {
-  width: 1100px;
+  //width: 1100px;
   height: auto;
   background-color: transparent;
+  &:deep(.q-card__section--vert) {
+    padding: 0;
+  }
 }
 
 .content {
@@ -83,6 +86,12 @@ a {
 
 a:hover {
     color: #4EE1A0;
+}
+
+@media (max-width: $breakpoint-sm) {
+  .q-card {
+    padding-left: 32px;
+  }
 }
 
 </style>

@@ -1,15 +1,15 @@
 <template>
   <div class="box">
-    <h1 class="q-ma-none">{{ props.technologie }}</h1>
+    <h1 class="q-ma-none" :class="`${$q.screen.xs ? 'text-center' : ''}`">{{ props.technologie }}</h1>
     <span>{{ props.exprience }} Years Experience</span>
   </div>
 </template>
 
 <script setup lang="ts">
-  const props = defineProps<{
-    technologie: string,
-    exprience: number,
-  }>();
+const props = defineProps<{
+  technologie: string,
+  exprience: number,
+}>();
 
 </script>
 
@@ -35,9 +35,16 @@ h1 {
 }
 
 span {
-    @extend %text;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 28px;
+  @extend %text;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 28px;
+}
+
+@media (max-width: $breakpoint-sm) {
+  .box {
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>
