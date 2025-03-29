@@ -2,7 +2,7 @@
   <q-card class="no-shadow">
     <q-card-section>
       <div class="content row align-items justify-between" :class="{ 'expanded': expanded }">
-        <div class="col-6 col-sm-4 q-mt-xl" v-for="(skil, count) in skils" :key="count">
+        <div class="col-12 col-sm-6 col-md-4 q-mt-xl" v-for="(skil, count) in skils" :key="count">
           <UiTechnologiesExpirienceItem :exprience="skil.exprience" :technologie="skil.technologie" />
         </div>
       </div>
