@@ -31,7 +31,7 @@
       </div>
 
       <div class="col-12 col-md-8 container">
-        <UiCardTechlogiesExpirience />
+        <UiCardTechnologiesExpirience :skils="skils"/>
       </div>
 
     </section>
@@ -62,21 +62,21 @@
 <script setup lang="ts">
 import UiBoxPerfil from "~~/src/core/components/BoxPerfil.vue";
 import UiImageProfile from "~~/src/core/components/ImagePerfil.vue";
-import UiCardTechlogiesExpirience from "~~/src/core/components/CardTechlogiesExpirience.vue";
+import UiCardTechnologiesExpirience from "~/core/components/CardTechnologiesExpirience.vue";
 import UiButton from "~/core/components/Button.vue";
 import UiCardProjects from "~~/src/core/components/CardProjects.vue";
 import UiContact from "~~/src/core/components/Contact.vue";
 import type { IProject } from "~~/server/Projects/IProjects";
+import type { ISkills } from "~/core/entities/ISkills";
 
-
-const skils = [
+const skils: Array<ISkills> = [
   {
     technologie: "HTML",
-    exprience: 11,
+    exprience: 8,
   },
   {
     technologie: "CSS",
-    exprience: 11,
+    exprience: 8,
   },
   {
     technologie: "Javascript",
