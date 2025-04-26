@@ -2,16 +2,24 @@
 
     <div class="full-width full-height row items-center">
         <div class="full-width text-center">
-            <p>
-                <a flat href="#">View Project</a>
+            <p v-if="props.url !== undefined">
+                <UiButton text="View Project" :link="props.url" />
             </p>
-            <p class="q-mt-xl">
-                <a flat href="#">View Code</a>
+            <p v-if="props.git !== undefined" :class="`${props.url !== undefined ? 'q-mt-xl' : ''}`">
+                <UiButton text="View Code" :link="props.git" />
             </p>
         </div>
     </div>
 
 </template>
+
+<script setup lang="ts">
+import type { ILink } from "~~/server/Projects/IProjects";
+import UiButton from "./Button.vue";
+
+
+const props = defineProps<ILink>();
+</script>
 
 <style scoped lang="scss">
 a {

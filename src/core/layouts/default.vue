@@ -11,8 +11,8 @@
 <script setup lang="ts">
 </script>
 
-<style scoped lang="scss">
-.q-layout {
+<style lang="scss">
+body {
   background-color: $dark-navy;
 }
 

@@ -1,10 +1,21 @@
 <template>
-  <a flat href="#">CONTACT ME</a>
+  <a flat :href="props.link">{{props.text.toUpperCase()}}</a>
 </template>
+
+<script setup lang="ts">
+
+  const props = withDefaults(defineProps<{
+    text: string;
+    link: string;
+  }>(), {
+    link: "#",
+  });
+
+</script>
 
 <style scoped lang="scss">
 a {
-  width: 120px;
+  width: auto;
   height: 38px;
   text-decoration: none;  
   color: var(--White, #fff);
@@ -22,5 +33,3 @@ a:hover {
     color: #4EE1A0;
 }
 </style>
-
-<script setup lang="ts"></script>

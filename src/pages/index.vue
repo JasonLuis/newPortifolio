@@ -1,139 +1,131 @@
 <template>
   <div class="decor-left"></div>
   <div class="decor-right"></div>
-  <main class="q-px-auto">
-    <section>
-      <div class="container row align-items justify-between">
-        <div class="info-left q-mt-xl">
-          <span class="text-white name-header">jasoncosta</span>
-          <UiBoxPerfil style="margin-top: 157px" />
+  <main class="full-width full-height">
+    <section class="row justify-center">
+      <div class="container min-height-container row col-12 col-md-8">
+        <div class="info-perfil col-12 col-sm-8">
+          <p class="text-white name-header q-mt-xl">jasoncosta</p>
+          <div :class="`${$q.screen.lt.sm ? 'full-width row justify-center relative-position' : 'hidden'}`">
+            <UiImageProfile />
+          </div>
+          <UiBoxPerfil class="mt-personalizado" />
         </div>
-        <div class="info-right">
+
+        <div class="col-12 col-sm-4 col-md-6" :class="`${$q.screen.md ? 'hidden' : ''}`">
+
+        </div>
+
+        <div class="profile">
           <UiImageProfile />
         </div>
       </div>
     </section>
-    <hr style="margin-top: 102px" />
 
-    <section class="row">
-      <div class="row align-items justify-between">
-        <UiCardTechlogiesExpirience />
-      </div>
-    </section>
-  
-    
-    <section class="row" style="margin-top: 120px;">
-      <div class="row items-center justify-between" style="width: 100%;">
-        <p class="title">Projects</p>
-        <UiButtonContacMe />
+
+    <section class="row justify-center q-mt-xl">
+      <div class="col-12 col-md-8">
+        <div class="padding-x full-width text-center">
+          <hr style="max-width: 1110px;" />
+        </div>
       </div>
 
-      <div class="row q-mt-xl" >
-        <UiCardProjects 
-          v-for="(project, index) in projects"
-          :name="project.name"
-          :img="project.img"
-          :tecnologies="project.tecnologies"
-          :links="project.links"
-          :key="index" 
-        />
+      <div class="col-12 col-md-8 container">
+        <UiCardTechnologiesExpirience :skils="skils"/>
+      </div>
+
+    </section>
+
+    <section class="row justify-center" style="position: relative; margin-top: 128px;">
+      <div class="col-12 col-md-8 container q-mb-xl">
+        <div class="row items-center justify-between padding-x">
+          <p class="title q-mb-none">Projects</p>
+          <UiButton text="Contact Me" />
+        </div>
+      </div>
+
+      <div class="col-12 col-md-8 container padding-x" :class="`${$q.screen.xs ? 'row justify-center' : ''}`">
+        <UiCardProjects v-for="(project, index) in projects" :name="project.name" :img="project.img"
+          :tecnologies="project.tecnologies" :link="project.link" :key="index" />
       </div>
     </section>
+
+    <section class="row justify-center" style="position: relative; background: var(--Dark-Grey, #242424);">
+      <div class="decor-left-contact"></div>
+      <div class="col-12 col-md-8 container row">
+        <UiContact />
+      </div>
+    </section>  
   </main>
-  
 </template>
 
 <script setup lang="ts">
 import UiBoxPerfil from "~~/src/core/components/BoxPerfil.vue";
 import UiImageProfile from "~~/src/core/components/ImagePerfil.vue";
-import UiCardTechlogiesExpirience from "~~/src/core/components/CardTechlogiesExpirience.vue";
-import UiButtonContacMe from "~~/src/core/components/ButtonContactMe.vue";
+import UiCardTechnologiesExpirience from "~/core/components/CardTechnologiesExpirience.vue";
+import UiButton from "~/core/components/Button.vue";
 import UiCardProjects from "~~/src/core/components/CardProjects.vue";
+import UiContact from "~~/src/core/components/Contact.vue";
 import type { IProject } from "~~/server/Projects/IProjects";
+import type { ISkills } from "~/core/entities/ISkills";
 
-const skils = [
+const skils: Array<ISkills> = [
   {
     technologie: "HTML",
-    exprience: 11
+    exprience: 8,
   },
   {
     technologie: "CSS",
-    exprience: 11
+    exprience: 8,
   },
   {
     technologie: "Javascript",
-    exprience: 4
+    exprience: 4,
   },
   {
     technologie: "Typescript",
-    exprience: 4
+    exprience: 4,
   },
   {
     technologie: "VueJS",
-    exprience: 3
-  },
-  {
-    technologie: "Java",
-    exprience: 2
-  },
-  {
-    technologie: "Kotlin",
-    exprience: 1
-  },
-  {
-    technologie: "Spring Boot",
-    exprience: 2
-  },
-  {
-    technologie: "Python",
-    exprience: 1
-  },
-  {
-    technologie: "OpenCV",
-    exprience: 1
+    exprience: 3,
   },
   {
     technologie: "C#",
-    exprience: 1
+    exprience: 1,
   },
   {
-    technologie: "Aps.NET",
-    exprience: 1
+    technologie: "ASP.NET",
+    exprience: 1,
   },
   {
     technologie: "Blazor",
-    exprience: 1
+    exprience: 1,
   },
-]
-
-const projects:Array<IProject> = [
-  {
-    img: new URL("../core/assets/images/projeto1.png", import.meta.url).toString(),
-    name: "Design Portifolio",
-    tecnologies: [
-      "HTML",
-      "CSS",
-      "Javascript"
-    ],
-    links: [
-      {
-        github: "Github",
-        url: "https://github.com/jasoncosta00"
-      }
-    ]
-  }
 ];
 
+const projects: Array<IProject> = [
+  {
+    img: new URL(
+      "../core/assets/images/projeto1.png",
+      import.meta.url
+    ).toString(),
+    name: "Design Portifolio",
+    tecnologies: ["HTML", "CSS", "Javascript"],
+    link: {
+      git: "https://github.com/jasonluis",
+      url: "https://github.com/jasonluis",
+    },
+  },
+];
 </script>
 
 <style scoped lang="scss">
-
 %text {
-  color: var(--White, #FFF);
-  font-feature-settings: 'liga' off, 'clig' off;
+  color: var(--White, #fff);
+  font-feature-settings: "liga" off, "clig" off;
   font-family: "Space Grotesk";
 }
-
 
 %decor {
   background-image: url("../core/assets/icon/pattern-rings.svg");
@@ -142,17 +134,8 @@ const projects:Array<IProject> = [
   width: 100%;
 }
 
-section {
-  max-width: 1112px;
-}
-
-.container {
-  width: 100%;
-  flex-wrap: nowrap;
-}
-
 .name-header {
-  font-family: "Space Grotesk";
+  @extend %text;
   font-size: 32px;
   font-style: normal;
   font-weight: 700;
@@ -160,14 +143,19 @@ section {
   letter-spacing: -0.444px;
 }
 
-.info-left {
-  z-index: 2;
+.container {
+  position: relative;
+  max-width: 1110px;
 }
 
-.info-right {
+.min-height-container {
+  min-height: 720px;
+}
+
+.profile {
+  position: absolute;
   z-index: 1;
-  position: relative;
-  left: -40px;
+  right: 0px;
 }
 
 .decor-left {
@@ -177,11 +165,18 @@ section {
   pointer-events: none;
 }
 
+.decor-left-contact {
+  @extend %decor;
+  height: 100%;
+  background-position: -100px 290px;
+  pointer-events: none;
+}
+
 .decor-right {
   @extend %decor;
   min-height: 100vh;
   height: 100%;
-  background-position: calc(100% + 200px) 1077px;
+  background-position: calc(100% + 200px) 1000px;
   pointer-events: none;
 }
 
@@ -192,5 +187,99 @@ section {
   font-weight: 700;
   line-height: 88px;
   letter-spacing: -2.5px;
+}
+
+.text {
+  @extend %text;
+  max-width: 445px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  color: var(--Grey, #D9D9D9);
+}
+
+.mt-personalizado {
+  margin-top: 157px;
+}
+
+.padding-x {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+@media (max-width: $breakpoint-md) {
+  .mt-personalizado {
+    margin-top: 90px;
+  }
+
+  .profile {
+    right: 0px;
+  }
+
+  .min-height-container {
+    min-height: 600px;
+  }
+
+  .title {
+    font-size: 72px;
+    line-height: 72px;
+    letter-spacing: -2.045px;
+  }
+}
+
+
+@media (max-width: $breakpoint-sm) {
+
+  .info-perfil {
+    padding-left: 32px;
+  }
+
+  .padding-x {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+
+
+@media (max-width: $breakpoint-xs) {
+
+  .container {
+    padding-left: 0px;
+  }
+
+  .profile {
+    display: none;
+  }
+
+  .name-header {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .mt-personalizado {
+    margin-top: 40px;
+  }
+
+  .decor-left {
+    background-position: -220px 175px;
+  }
+
+  .info-perfil {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .title {
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.136px;
+  }
+
+  .padding-x {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
 }
 </style>

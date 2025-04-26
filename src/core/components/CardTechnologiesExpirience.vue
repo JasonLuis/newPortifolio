@@ -2,7 +2,7 @@
   <q-card class="no-shadow">
     <q-card-section>
       <div class="content row align-items justify-between" :class="{ 'expanded': expanded }">
-        <div class="col-6 col-sm-4 q-mt-xl" v-for="(skil, count) in skils" :key="count">
+        <div class="col-12 col-sm-6 col-md-4 q-mt-xl" v-for="(skil, count) in props.skils" :key="count">
           <UiTechnologiesExpirienceItem :exprience="skil.exprience" :technologie="skil.technologie" />
         </div>
       </div>
@@ -20,22 +20,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import UiTechnologiesExpirienceItem from "../components/TechnologiesExpirienceItem.vue";
+import type { ISkills } from '../entities/ISkills';
 
-const skils = [
-  { technologie: "HTML", exprience: 11 },
-  { technologie: "CSS", exprience: 11 },
-  { technologie: "Javascript", exprience: 4 },
-  { technologie: "Typescript", exprience: 4 },
-  { technologie: "VueJS", exprience: 3 },
-  { technologie: "Java", exprience: 2 },
-  { technologie: "Kotlin", exprience: 1 },
-  { technologie: "Spring Boot", exprience: 2 },
-  { technologie: "Python", exprience: 1 },
-  { technologie: "OpenCV", exprience: 1 },
-  { technologie: "C#", exprience: 1 },
-  { technologie: "Aps.NET", exprience: 1 },
-  { technologie: "Blazor", exprience: 1 }
-];
+const props = defineProps({
+  skils: {
+    type: Array<ISkills>,
+    default: () => []
+  }
+});
 
 const expanded = ref(false);
 
@@ -48,9 +40,12 @@ const toggleExpand = () => {
 
 <style scoped lang="scss">
 .q-card {
-  width: 1100px;
+  //width: 1100px;
   height: auto;
   background-color: transparent;
+  &:deep(.q-card__section--vert) {
+    padding: 0;
+  }
 }
 
 .content {
@@ -83,6 +78,12 @@ a {
 
 a:hover {
     color: #4EE1A0;
+}
+
+@media (max-width: $breakpoint-sm) {
+  .q-card {
+    padding-left: 32px;
+  }
 }
 
 </style>
