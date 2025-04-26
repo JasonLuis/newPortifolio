@@ -31,12 +31,12 @@
       </div>
 
       <div class="col-12 col-md-8 container">
-        <UiCardTechnologiesExpirience :skils="skils"/>
+        <UiCardTechnologiesExpirience :skils="skils" />
       </div>
 
     </section>
 
-    <section class="row justify-center" style="position: relative; margin-top: 128px;">
+    <section class="row justify-center" style="position: relative; margin-top: 128px; margin-bottom: 139px;">
       <div class="col-12 col-md-8 container q-mb-xl">
         <div class="row items-center justify-between padding-x">
           <p class="title q-mb-none">Projects</p>
@@ -44,18 +44,29 @@
         </div>
       </div>
 
-      <div class="col-12 col-md-8 container padding-x" :class="`${$q.screen.xs ? 'row justify-center' : ''}`">
+      <div class="col-12 col-md-8 container padding-x row" :class="`${ $q.screen.xs ? ' justify-center' : 'justify-between'}`" style="display: flex; gap: 18px;">
         <UiCardProjects v-for="(project, index) in projects" :name="project.name" :img="project.img"
           :tecnologies="project.tecnologies" :link="project.link" :key="index" />
       </div>
     </section>
 
-    <section class="row justify-center" style="position: relative; background: var(--Dark-Grey, #242424);">
+    <footer class="row justify-center" style="position: relative; background: var(--Dark-Grey, #242424);">
       <div class="decor-left-contact"></div>
       <div class="col-12 col-md-8 container row">
         <UiContact />
+
+        <div class="col-12">
+          <div class="padding-x full-width text-center">
+            <hr style="max-width: 1110px;" />
+            <div class="row justify-between">
+              <p class="text-white name-header q-mt-md">jasoncosta</p>
+
+              <UiListSocialIcons />
+            </div>
+          </div>
+        </div>
       </div>
-    </section>  
+    </footer>
   </main>
 </template>
 
@@ -66,7 +77,9 @@ import UiCardTechnologiesExpirience from "~/core/components/CardTechnologiesExpi
 import UiButton from "~/core/components/Button.vue";
 import UiCardProjects from "~~/src/core/components/CardProjects.vue";
 import UiContact from "~~/src/core/components/Contact.vue";
-import type { IProject } from "~~/server/Projects/IProjects";
+import UiListSocialIcons from "~~/src/core/components/ListSocialIcons.vue";
+
+import type { IProject } from "~/core/entities/IProjects";
 import type { ISkills } from "~/core/entities/ISkills";
 
 const skils: Array<ISkills> = [
@@ -107,14 +120,49 @@ const skils: Array<ISkills> = [
 const projects: Array<IProject> = [
   {
     img: new URL(
-      "../core/assets/images/projeto1.png",
+      "../core/assets/images/linklearn.jpg",
       import.meta.url
     ).toString(),
-    name: "Design Portifolio",
-    tecnologies: ["HTML", "CSS", "Javascript"],
+    name: "Link&Learn",
+    tecnologies: ["REACT", "Javascript", "NodeJS"],
     link: {
-      git: "https://github.com/jasonluis",
-      url: "https://github.com/jasonluis",
+      gitFront: "https://github.com/sasle/LinkNLearn",
+      gitBack: "https://github.com/JasonLuis/LinkNLearn",
+    },
+  },
+  {
+    img: new URL(
+      "../core/assets/images/hero-hairdresses.png",
+      import.meta.url
+    ).toString(),
+    name: "Hero HairDresses",
+    tecnologies: ["REACT", "Javascript", "NodeJS"],
+    link: {
+      gitFront: "https://github.com/JasonLuis/semana-do-heroi",
+    },
+  },
+  {
+    img: new URL(
+      "../core/assets/images/tictactoe.jpg",
+      import.meta.url
+    ).toString(),
+    name: "Tic Tac Toe",
+    tecnologies: ["VueJS", "Tipescript", "Quasar"],
+    link: {
+      url: "https://game-vue-tictactoe.netlify.app/",
+      gitFront: "https://github.com/JasonLuis/tic-tac-toe-vue",
+    },
+  },
+  {
+    img: new URL(
+      "../core/assets/images/pokedex.jpg",
+      import.meta.url
+    ).toString(),
+    name: "Pokedex",
+    tecnologies: ["Blazor", "ASP.NET", "Tailwind"],
+    link: {
+      url: "https://blazor-pokedex.fly.dev/",
+      gitFront: "https://github.com/JasonLuis/pokedex",
     },
   },
 ];

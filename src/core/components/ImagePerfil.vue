@@ -1,12 +1,7 @@
 <template>
   <div class="perfil">
     <div class="row justify-end" :class="`${$q.screen.xs ? '' : 'q-pr-lg q-pt-xl'}`">
-      <div class="list-icons">
-        <q-icon :name="`img: ${icons.github.icon}`" />
-        <q-icon :name="`img: ${icons.frontMentor.icon}`" />
-        <q-icon :name="`img: ${icons.linkedin.icon}`" />
-        <q-icon :name="`img: ${icons.twitter.icon}`" />
-      </div>
+      <UiListSocialIcons />
     </div>
 
     <img class="icon-circle" :src="`${iconCircle}`" />
@@ -14,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-
+import UiListSocialIcons from "~~/src/core/components/ListSocialIcons.vue";
 const iconCircle = new URL("../assets/icon/pattern-circle.svg", import.meta.url);
 
 const icons = {
@@ -45,18 +40,6 @@ const icons = {
   width: 445px;
   height: 720px;
   background: url("../assets/images/profile.png") #242424 0px 0px / 100% 100% no-repeat;
-}
-
-.list-icons {
-  display: flex;
-  align-items: center;
-  min-width: 192.5px;
-  justify-content: space-between;
-}
-
-.q-icon {
-  height: 25px;
-  width: 25px;
 }
 
 .icon-circle {
@@ -92,15 +75,5 @@ const icons = {
     background: linear-gradient(180deg, rgba(36, 36, 36, 0.00) 0.65%, #242424 100%), url("../assets/images/profile.png") 0px 0px / 100% 100% no-repeat;
   }
 
-  .q-icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .list-icons {
-    min-width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
 }
 </style>

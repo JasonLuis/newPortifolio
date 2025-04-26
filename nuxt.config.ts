@@ -39,7 +39,7 @@ export default defineNuxtConfig({
               template: { transformAssetUrls }
       }), */
       quasar({
-        sassVariables: '~/core/assets/styles/quasar.variables.sass'
+        sassVariables: '~/core/assets/styles/quasar.variables.sass',
       })
     ]
   },

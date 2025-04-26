@@ -6,6 +6,7 @@ export interface IProject {
 }
 
 export interface ILink {
-    git: string;
-    url: string;
+    gitFront?: string;
+    gitBack?: string;
+    url?: string;
 }

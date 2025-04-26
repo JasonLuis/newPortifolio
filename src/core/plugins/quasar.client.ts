@@ -21,7 +21,8 @@ import {
   QSpace,
   QAvatar,
   QInput,
-  QSelect
+  QSelect,
+  Notify
 } from 'quasar';
 import { defineNuxtPlugin } from '#app';
 
@@ -51,7 +52,9 @@ export default defineNuxtPlugin(nuxtApp => {
       QInput,
       QSelect
     },
-    plugins: {}
+    plugins: {
+      Notify
+    }
   };
 
   nuxtApp.vueApp.use(Quasar, quasarUserOptions);
