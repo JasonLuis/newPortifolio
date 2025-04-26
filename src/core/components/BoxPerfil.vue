@@ -14,7 +14,7 @@
       class="row items-center q-mt-md"
       :class="`${$q.screen.xs ? 'justify-center' : 'justify-start'}`"
     >
-      <UiButtonContacMe />
+      <UiButton text="Contact Me" />
       <!--  -->
     </div>
     
@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import UiButtonContacMe from "./ButtonContactMe.vue";
+import UiButton from "./Button.vue";
 
 
 </script>

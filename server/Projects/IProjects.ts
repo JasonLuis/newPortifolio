@@ -6,6 +6,6 @@ export interface IProject {
 }
 
 export interface ILink {
-    github: string;
+    git: string;
     url: string;
 }

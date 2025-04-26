@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@quasar/vite-plugin": "^1.7.0",
-    "sass": "^1.33.0"
+    "sass": "^1.33.0",
+    "typescript": "^5.8.2"
   }
 }

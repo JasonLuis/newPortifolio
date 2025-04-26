@@ -25,7 +25,7 @@
 
     <section class="row justify-center q-mt-xl">
       <div class="col-12 col-md-8">
-        <div class="divisor full-width text-center">
+        <div class="padding-x full-width text-center">
           <hr style="max-width: 1110px;" />
         </div>
       </div>
@@ -36,20 +36,26 @@
 
     </section>
 
-    <section class="row justify-center" style="margin-top: 120px">
-      <div class="col-12 col-md-8 container">
-        <div class="row items-center justify-between q-px-md" style="width: 100%">
-          <p class="title">Projects</p>
-          <UiButtonContacMe />
+    <section class="row justify-center" style="position: relative; margin-top: 128px;">
+      <div class="col-12 col-md-8 container q-mb-xl">
+        <div class="row items-center justify-between padding-x">
+          <p class="title q-mb-none">Projects</p>
+          <UiButton text="Contact Me" />
         </div>
-
       </div>
 
-      <div class="col-12 col-md-8 container">
+      <div class="col-12 col-md-8 container padding-x" :class="`${$q.screen.xs ? 'row justify-center' : ''}`">
         <UiCardProjects v-for="(project, index) in projects" :name="project.name" :img="project.img"
           :tecnologies="project.tecnologies" :link="project.link" :key="index" />
       </div>
     </section>
+
+    <section class="row justify-center" style="position: relative; background: var(--Dark-Grey, #242424);">
+      <div class="decor-left-contact"></div>
+      <div class="col-12 col-md-8 container row">
+        <UiContact />
+      </div>
+    </section>  
   </main>
 </template>
 
@@ -57,8 +63,9 @@
 import UiBoxPerfil from "~~/src/core/components/BoxPerfil.vue";
 import UiImageProfile from "~~/src/core/components/ImagePerfil.vue";
 import UiCardTechlogiesExpirience from "~~/src/core/components/CardTechlogiesExpirience.vue";
-import UiButtonContacMe from "~~/src/core/components/ButtonContactMe.vue";
+import UiButton from "~/core/components/Button.vue";
 import UiCardProjects from "~~/src/core/components/CardProjects.vue";
+import UiContact from "~~/src/core/components/Contact.vue";
 import type { IProject } from "~~/server/Projects/IProjects";
 
 
@@ -106,8 +113,8 @@ const projects: Array<IProject> = [
     name: "Design Portifolio",
     tecnologies: ["HTML", "CSS", "Javascript"],
     link: {
-      github: "Github",
-      url: "https://github.com/jasoncosta00",
+      git: "https://github.com/jasonluis",
+      url: "https://github.com/jasonluis",
     },
   },
 ];
@@ -145,10 +152,6 @@ const projects: Array<IProject> = [
   min-height: 720px;
 }
 
-[class^="min-height-"] {
-  min-height: var(--max-width, 100%);
-}
-
 .profile {
   position: absolute;
   z-index: 1;
@@ -162,11 +165,18 @@ const projects: Array<IProject> = [
   pointer-events: none;
 }
 
+.decor-left-contact {
+  @extend %decor;
+  height: 100%;
+  background-position: -100px 290px;
+  pointer-events: none;
+}
+
 .decor-right {
   @extend %decor;
   min-height: 100vh;
   height: 100%;
-  background-position: calc(100% + 200px) 1077px;
+  background-position: calc(100% + 200px) 1000px;
   pointer-events: none;
 }
 
@@ -179,11 +189,21 @@ const projects: Array<IProject> = [
   letter-spacing: -2.5px;
 }
 
+.text {
+  @extend %text;
+  max-width: 445px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  color: var(--Grey, #D9D9D9);
+}
+
 .mt-personalizado {
   margin-top: 157px;
 }
 
-.divisor {
+.padding-x {
   padding-left: 0px;
   padding-right: 0px;
 }
@@ -215,7 +235,7 @@ const projects: Array<IProject> = [
     padding-left: 32px;
   }
 
-  .divisor {
+  .padding-x {
     padding-left: 32px;
     padding-right: 32px;
   }
@@ -251,7 +271,13 @@ const projects: Array<IProject> = [
     padding-right: 12px;
   }
 
-  .divisor {
+  .title {
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.136px;
+  }
+
+  .padding-x {
     padding-left: 12px;
     padding-right: 12px;
   }
