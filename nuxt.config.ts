@@ -1,8 +1,20 @@
 import { quasar } from '@quasar/vite-plugin';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: true,
   srcDir: 'src/',
+  modules: [
+  "nuxt-nodemailer"
+  ],
+  nodemailer: {
+    host: process.env.SMTP_HOST,
+    port: parseInt(process.env.SMTP_PORT || '465'),
+    secure: process.env.SECURE === 'true',
+    auth: {
+      user: process.env.USER,
+      pass: process.env.PASSWORD
+    }
+  },
   dir: {
     pages: 'pages',
     assets: 'core/assets',
@@ -25,7 +37,10 @@ export default defineNuxtConfig({
     transpile: ['quasar']
   },
 
-  plugins: ['~/core/plugins/quasar.client.ts'],
+  plugins: [
+    //'~/core/plugins/quasar.client.ts'
+    { src: '~/core/plugins/quasar.client.ts', mode: 'client' },
+  ],
 
   imports: {
     dirs: ['~/core/composables/**']
@@ -34,6 +49,7 @@ export default defineNuxtConfig({
   // compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   vite: {
+    
     plugins: [
       /* vue({
               template: { transformAssetUrls }
@@ -43,5 +59,5 @@ export default defineNuxtConfig({
       })
     ]
   },
-  compatibilityDate: '2024-07-20'
+  compatibilityDate: '2025-04-27',
 })

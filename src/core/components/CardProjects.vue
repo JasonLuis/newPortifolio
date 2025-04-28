@@ -1,29 +1,47 @@
 <template>
-  <q-card class="image-container no-border-radius no-box-shadow" @mouseover="isHovered = true"
-    @mouseleave="isHovered = false">
-    <div class="image-overlay" v-if="isHovered"></div>
+  <client-only>
+    <q-card class="image-container no-border-radius no-box-shadow" @mouseover="isHovered = true"
+      @mouseleave="isHovered = false">
+      <div class="image-overlay" v-if="isHovered"></div>
 
-    <img class="image" :src="img" alt="example image" />
+      <img class="image" :src="img" alt="example image" />
 
-    <template v-if="$q.screen.xl || $q.screen.lg || $q.screen.md">
-      <transition name="fade" mode="out-in">
-        <UiLinksProject :git-front="link.gitFront" :git-back="link.gitBack" :url="link.url" v-if="isHovered" class="overlay-button" key="links-project" />
-      </transition>
-    </template>
+      <template v-if="$q.screen.xl || $q.screen.lg || $q.screen.md">
+        <transition name="fade" mode="out-in">
+          <UiLinksProject :git-front="link.gitFront" :git-back="link.gitBack" :url="link.url" v-if="isHovered"
+            class="overlay-button" key="links-project" />
+        </transition>
+      </template>
 
 
-    <q-card-section class="q-pa-none q-mt-md">
-      <div class="title-project">{{ props.name }}</div>
-      <div class="tecnologies">
-        <div v-for="(tecnologies, count) in props.tecnologies" :key="count">{{ tecnologies }}</div>
-      </div>
-    </q-card-section>
-    <q-card-section class="q-pa-none q-mt-md" v-if="!$q.screen.xl && !$q.screen.lg && !$q.screen.md">
-      
-      <UiButton text="View Project" :link="props.link.url" />
-      <UiButton text="View Code" :link="props.link.gitFront" class="q-ml-lg"/>
-    </q-card-section>
-  </q-card>
+      <q-card-section class="q-pa-none q-mt-md">
+        <div class="title-project">{{ props.name }}</div>
+        <div class="tecnologies">
+          <div v-for="(tecnologies, count) in props.tecnologies" :key="count">{{ tecnologies }}</div>
+        </div>
+      </q-card-section>
+      <q-card-section class="q-pa-none q-mt-md" v-if="!$q.screen.xl && !$q.screen.lg && !$q.screen.md">
+        <div class="q-gutter-md">
+          <template v-if="props.link.url">
+            <UiButton text="View Project" :link="props.link.url" />
+          </template>
+
+          <template v-if="props.link.gitFront !== undefined && props.link.gitBack !== undefined">
+            <UiButton text="Code Frontend" :link="props.link.gitFront" />
+            <UiButton text="Code Backend" :link="props.link.gitFront" />
+          </template>
+
+          <template v-else>
+            <UiButton v-if="props.link.gitFront !== undefined"
+                      text="View Code"
+                      :link="props.link.gitFront" />
+            <UiButton v-if="props.link.gitBack !== undefined"
+                      text="View Code Backend" :link="props.link.gitBack" />
+          </template>
+        </div>
+      </q-card-section>
+    </q-card>
+  </client-only>
 </template>
 
 <script setup lang="ts">
@@ -122,9 +140,11 @@ const img = computed(() => {
   .q-card {
     width: 420px;
     height: 400px;
+
     &:deep(.image) {
       max-height: 320px;
     }
+
     &:deep(.image-overlay) {
       max-height: 320px;
     }
@@ -135,14 +155,14 @@ const img = computed(() => {
   .q-card {
     width: 345px;
     height: 400px;
+
     &:deep(.image) {
       max-height: 253px;
     }
   }
+
   .image-overlay {
     display: none;
   }
 }
-
-
 </style>

@@ -9,7 +9,7 @@
           <div :class="`${$q.screen.lt.sm ? 'full-width row justify-center relative-position' : 'hidden'}`">
             <UiImageProfile />
           </div>
-          <UiBoxPerfil class="mt-personalizado" />
+          <UiBoxPerfil class="mt-personalizado" @onClick="scrollToContact"/>
         </div>
 
         <div class="col-12 col-sm-4 col-md-6" :class="`${$q.screen.md ? 'hidden' : ''}`">
@@ -40,7 +40,7 @@
       <div class="col-12 col-md-8 container q-mb-xl">
         <div class="row items-center justify-between padding-x">
           <p class="title q-mb-none">Projects</p>
-          <UiButton text="Contact Me" />
+          <UiButton text="Contact Me" @onClick="scrollToContact" />
         </div>
       </div>
 
@@ -50,13 +50,13 @@
       </div>
     </section>
 
-    <footer class="row justify-center" style="position: relative; background: var(--Dark-Grey, #242424);">
+    <footer id="contact" class="row justify-center" style="position: relative; background: var(--Dark-Grey, #242424);">
       <div class="decor-left-contact"></div>
       <div class="col-12 col-md-8 container row">
         <UiContact />
 
         <div class="col-12">
-          <div class="padding-x full-width text-center">
+          <div class="padding-x full-width text-center q-mt-xl">
             <hr style="max-width: 1110px;" />
             <div class="row justify-between">
               <p class="text-white name-header q-mt-md">jasoncosta</p>
@@ -166,6 +166,13 @@ const projects: Array<IProject> = [
     },
   },
 ];
+
+const scrollToContact = () => {
+  const section = document.getElementById('contact');
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+}
 </script>
 
 <style scoped lang="scss">

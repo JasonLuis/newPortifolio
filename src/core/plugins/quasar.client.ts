@@ -22,7 +22,8 @@ import {
   QAvatar,
   QInput,
   QSelect,
-  Notify
+  Notify,
+  QForm
 } from 'quasar';
 import { defineNuxtPlugin } from '#app';
 
@@ -50,7 +51,8 @@ export default defineNuxtPlugin(nuxtApp => {
       QSpace,
       QAvatar,
       QInput,
-      QSelect
+      QSelect,
+      QForm
     },
     plugins: {
       Notify

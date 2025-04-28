@@ -1,11 +1,13 @@
 <template>
-  <div class="perfil">
-    <div class="row justify-end" :class="`${$q.screen.xs ? '' : 'q-pr-lg q-pt-xl'}`">
-      <UiListSocialIcons />
-    </div>
+  <client-only>
+    <div class="perfil">
+      <div class="row justify-end" :class="`${$q.screen.xs ? '' : 'q-pr-lg q-pt-xl'}`">
+        <UiListSocialIcons />
+      </div>
 
-    <img class="icon-circle" :src="`${iconCircle}`" />
-  </div>
+      <img class="icon-circle" :src="`${iconCircle}`" />
+    </div>
+  </client-only>
 </template>
 
 <script setup lang="ts">

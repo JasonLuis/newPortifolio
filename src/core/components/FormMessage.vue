@@ -1,47 +1,95 @@
 <template>
-    <q-form @submit="submitForm">
-        <q-input v-model="name" label="NAME" placeholder=""
-            :rules="[val => val && val.length > 0 || 'Sorry, invalid format here']" />
+    <client-only>
+        <q-form @submit="sendForm" id="form" ref="form">
+            <q-input v-model="fields.name.value" label="NAME" placeholder="" :readonly="loading"
+                :rules="[val => val && val.length > 0 || 'Sorry, invalid format here']" />
 
-        <q-input v-model="email" label="E-MAIL" placeholder=""
-            :rules="[(val => (validateEmail(val)) || 'Sorry, invalid format here')]" />
+            <q-input v-model="fields.email.value" label="E-MAIL" placeholder="" :readonly="loading"
+                :rules="[(val => (validateEmail(val)) || 'Sorry, invalid format here')]" />
 
 
-        <q-input v-model="message" label="MESSAGE" type="textarea"
-            :rules="[val => val && val.length > 0 || 'Sorry, invalid format here']" />
+            <q-input v-model="fields.message.value" label="MESSAGE" type="textarea" :readonly="loading"
+                :rules="[val => val && val.length > 0 || 'Sorry, invalid format here']" />
 
-        <div class="row justify-end">
-            <q-btn type="submit" label="SEND MESSAGE" />
-        </div>
+            <div class="row justify-end">
+                <UiButton :loading="loading" text="send message" type="submit" />
+            </div>
 
-    </q-form>
+        </q-form>
+    </client-only>
 </template>
 
 <script setup lang="ts">
 
 import { ref } from 'vue';
-import { useQuasar } from 'quasar';
+import { QForm, useQuasar } from 'quasar';
+import UiButton from './Button.vue';
 
-const name = ref<string>('');
-const email = ref<string>('');
-const message = ref<string>('');
+const form = ref<QForm | null>(null);
+
+const fields = {
+  name: ref<string>(''),
+  email: ref<string>(''),
+  message: ref<string>(''),
+};
+
+const loading = ref<boolean>(false);
 
 const $q = useQuasar();
 
-const submitForm = () => {
-    $q.notify({
-        message: 'Form submitted!',
-        color: 'green',
-        position: 'top',
-        timeout: 2000,
-    });
-}
+const sendForm = async () => {
 
+    // console.log(process.env.USER);
+
+    try {
+        loading.value = true;
+        const res = await $fetch('/api/send-email', {
+            method: 'POST',
+            body: {
+                name: fields.name.value,
+                email: fields.email.value,
+                message: fields.message.value
+            }
+        });
+
+        loading.value = false;
+
+        if (res) {
+            clearInputs();          
+            await nextTick();        // 2 - espera Vue atualizar DOM
+            resetValidation();
+            $q.notify({
+                message: 'Form submitted!',
+                color: 'green',
+                position: 'top',
+                timeout: 2000,
+            });
+        } else {
+            $q.notify({
+                message: 'Error sending form!',
+                color: 'red',
+                position: 'top',
+                timeout: 2000,
+            });
+        }
+    } catch (error) {
+        console.error('Erro ao enviar a requisição:', error);
+    }
+}
 const validateEmail = (email: string) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
 }
 
+const clearInputs = () => {
+  Object.keys(fields).forEach(key => {
+    fields[key as keyof typeof fields].value = '';
+  });
+}
+
+const resetValidation = () => {
+    form.value?.resetValidation();
+}
 </script>
 
 <style scoped lang="scss">
@@ -80,31 +128,6 @@ const validateEmail = (email: string) => {
     &:deep(.q-field__inner > .q-field__control > .q-field__control-container > .q-field__native) {
         color: white !important;
     }
-}
-
-.q-btn {
-    width: auto;
-    height: 38px;
-    text-decoration: none;
-    color: var(--White, #fff);
-    font-family: "Space Grotesk";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 26px;
-    letter-spacing: 2.286px;
-    border-bottom: 2px solid #4EE1A0;
-    padding-bottom: 10px;
-    padding-right: 0px;
-    padding-left: 0px;
-}
-
-.q-btn::before {
-    box-shadow: none;
-}
-
-.q-btn:hover {
-    color: #4EE1A0;
 }
 
 @media (max-width: $breakpoint-sm) {
