@@ -46,7 +46,7 @@ export function TemplateHtmlRecruiter(name: string) {
       <body>
         <div class="email-container">
           <div class="email-header">
-            <h1>Olá, ${name}!</h1>
+            <h1>Hello, ${name.replace(/\s+$/g, "")}!</h1>
           </div>
           <div class="email-body">
             <p>Thank you for reaching out! 👋</p>
@@ -105,7 +105,7 @@ export function TemplateHtmlForMe(name: string, email: string, message: string) 
         <body>
           <div class="email-container">
             <div class="email-header">
-              <h1>From ${name}!</h1>
+              <h1>From ${name.replace(/\s+$/g, "")}!</h1>
             </div>
             <div class="email-body">
               <p>${message}</p>
