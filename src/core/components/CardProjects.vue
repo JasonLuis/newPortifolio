@@ -1,36 +1,54 @@
 <template>
-  <q-card class="image-container no-border-radius no-box-shadow" @mouseover="isHovered = true"
-    @mouseleave="isHovered = false">
-    <div class="image-overlay" v-if="isHovered"></div>
+  <client-only>
+    <q-card class="image-container no-border-radius no-box-shadow" @mouseover="isHovered = true"
+      @mouseleave="isHovered = false">
+      <div class="image-overlay" v-if="isHovered"></div>
 
-    <img class="image" :src="img" alt="example image" />
+      <img class="image" :src="img" alt="example image" />
 
-    <template v-if="$q.screen.xl || $q.screen.lg || $q.screen.md">
-      <transition name="fade" mode="out-in">
-        <UiLinksProject :git="link.git" :url="link.url" v-if="isHovered" class="overlay-button" key="links-project" />
-      </transition>
-    </template>
+      <template v-if="$q.screen.xl || $q.screen.lg || $q.screen.md">
+        <transition name="fade" mode="out-in">
+          <UiLinksProject :git-front="link.gitFront" :git-back="link.gitBack" :url="link.url" v-if="isHovered"
+            class="overlay-button" key="links-project" />
+        </transition>
+      </template>
 
 
-    <q-card-section class="q-pa-none q-mt-md">
-      <div class="title-project">{{ props.name }}</div>
-      <div class="tecnologies">
-        <div v-for="(tecnologies, count) in props.tecnologies" :key="count">{{ tecnologies }}</div>
-      </div>
-    </q-card-section>
-    <q-card-section class="q-pa-none q-mt-md" v-if="!$q.screen.xl && !$q.screen.lg && !$q.screen.md">
-      
-      <UiButton text="View Project" :link="props.link.url" />
-      <UiButton text="View Code" :link="props.link.git" class="q-ml-lg"/>
-    </q-card-section>
-  </q-card>
+      <q-card-section class="q-pa-none q-mt-md">
+        <div class="title-project">{{ props.name }}</div>
+        <div class="tecnologies">
+          <div v-for="(tecnologies, count) in props.tecnologies" :key="count">{{ tecnologies }}</div>
+        </div>
+      </q-card-section>
+      <q-card-section class="q-pa-none q-mt-md" v-if="!$q.screen.xl && !$q.screen.lg && !$q.screen.md">
+        <div class="q-gutter-md">
+          <template v-if="props.link.url">
+            <UiButton text="View Project" :link="props.link.url" />
+          </template>
+
+          <template v-if="props.link.gitFront !== undefined && props.link.gitBack !== undefined">
+            <UiButton text="Code Frontend" :link="props.link.gitFront" />
+            <UiButton text="Code Backend" :link="props.link.gitFront" />
+          </template>
+
+          <template v-else>
+            <UiButton v-if="props.link.gitFront !== undefined"
+                      text="View Code"
+                      :link="props.link.gitFront" />
+            <UiButton v-if="props.link.gitBack !== undefined"
+                      text="View Code Backend" :link="props.link.gitBack" />
+          </template>
+        </div>
+      </q-card-section>
+    </q-card>
+  </client-only>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import UiLinksProject from "./LinksProject.vue";
 import UiButton from "./Button.vue";
-import type { IProject } from "~~/server/Projects/IProjects";
+import type { IProject } from "~/core/entities/IProjects";
 
 const props = defineProps<IProject>();
 
@@ -56,14 +74,14 @@ const img = computed(() => {
 .q-card {
   position: relative;
   display: inline-block;
-  width: 545px;
+  width: 540px;
   height: 487px;
   background-color: transparent;
 
   &:deep(.image) {
     max-height: 400px;
     width: 100%;
-    height: 100%;
+    height: 400px;
     display: block;
     transition: filter 0.3s ease;
   }
@@ -118,14 +136,31 @@ const img = computed(() => {
   opacity: 0;
 }
 
+@media (max-width: $breakpoint-lg) {
+  .q-card {
+    width: 420px;
+    height: 400px;
+
+    &:deep(.image) {
+      max-height: 320px;
+    }
+
+    &:deep(.image-overlay) {
+      max-height: 320px;
+    }
+  }
+}
+
 @media (max-width: $breakpoint-sm) {
   .q-card {
     width: 345px;
     height: 400px;
+
     &:deep(.image) {
-      max-height: 253px;;
+      max-height: 253px;
     }
   }
+
   .image-overlay {
     display: none;
   }

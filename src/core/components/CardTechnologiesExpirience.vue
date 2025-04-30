@@ -1,19 +1,21 @@
 <template>
-  <q-card class="no-shadow">
-    <q-card-section>
-      <div class="content row align-items justify-between" :class="{ 'expanded': expanded }">
-        <div class="col-12 col-sm-6 col-md-4 q-mt-xl" v-for="(skil, count) in props.skils" :key="count">
-          <UiTechnologiesExpirienceItem :exprience="skil.exprience" :technologie="skil.technologie" />
+  <client-only>
+    <q-card class="no-shadow">
+      <q-card-section>
+        <div class="content row align-items justify-between" :class="{ 'expanded': expanded }">
+          <div class="col-12 col-sm-6 col-md-4 q-mt-xl" v-for="(skil, count) in props.skils" :key="count">
+            <UiTechnologiesExpirienceItem :exprience="skil.exprience" :technologie="skil.technologie" />
+          </div>
         </div>
-      </div>
-      
-    </q-card-section>
-    <q-card-actions class="row justify-center">
-      <a flat @click="toggleExpand" class="q-mt-sm">
-        {{ expanded ? 'VER MENOS' : 'VER MAIS' }}
-      </a>
-    </q-card-actions>
-  </q-card>
+
+      </q-card-section>
+      <q-card-actions class="row justify-center">
+        <a flat @click="toggleExpand" class="q-mt-sm">
+          {{ expanded ? 'VER MENOS' : 'VER MAIS' }}
+        </a>
+      </q-card-actions>
+    </q-card>
+  </client-only>
 </template>
 
 
@@ -43,6 +45,7 @@ const toggleExpand = () => {
   //width: 1100px;
   height: auto;
   background-color: transparent;
+
   &:deep(.q-card__section--vert) {
     padding: 0;
   }
@@ -62,7 +65,7 @@ a {
   width: 120px;
   height: 38px;
   text-align: center;
-  text-decoration: none;  
+  text-decoration: none;
   color: var(--White, #fff);
   font-family: "Space Grotesk";
   font-size: 16px;
@@ -77,7 +80,7 @@ a {
 }
 
 a:hover {
-    color: #4EE1A0;
+  color: #4EE1A0;
 }
 
 @media (max-width: $breakpoint-sm) {
@@ -85,8 +88,4 @@ a:hover {
     padding-left: 32px;
   }
 }
-
 </style>
-
-
-

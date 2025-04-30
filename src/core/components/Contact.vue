@@ -1,12 +1,14 @@
 <template>
-    <div class="col-12 col-md-6">
-        <h1 class="title">Contact</h1>
-        <p class="text">I would love to hear about your project and how
-            I could help. Please fill in the form, and I’ll get back to you as soon as possible.</p>
-    </div>
-    <div class="col-12 col-md-6 row justify-end contact-form" :class="`${$q.screen.xs ? 'row justify-center' : ''}`">
-        <UiFormMessage class="q-my-xl" />
-    </div>
+    <client-only>
+        <div class="col-12 col-md-6">
+            <h1 class="title">Contact</h1>
+            <p class="text">Checked out my personal projects and found them interesting? Feel free to leave a message — I'll get back to you via email as soon as possible!</p>
+        </div>
+        <div class="col-12 col-md-6 q-py-xl row justify-end contact-form"
+            :class="`${$q.screen.xs ? 'row justify-center' : ''}`">
+            <UiFormMessage />
+        </div>
+    </client-only>
 </template>
 
 <script setup lang="ts">
