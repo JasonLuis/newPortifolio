@@ -3,18 +3,21 @@
   <div class="decor-right"></div>
   <main class="full-width full-height">
     <section class="row justify-center">
-      <div class="container min-height-container row col-12 col-md-8">
+      <div class="container min-height-container row col-12 col-md-9">
         <div class="info-perfil col-12 col-sm-8">
           <p class="text-white name-header q-mt-xl">jasoncosta</p>
-          <div :class="`${$q.screen.lt.sm ? 'full-width row justify-center relative-position' : 'hidden'}`">
+          <div
+            :class="`${$q.screen.lt.sm ? 'full-width row justify-center relative-position' : 'hidden'}`"
+          >
             <UiImageProfile />
           </div>
-          <UiBoxPerfil class="mt-personalizado" @onClick="scrollToContact"/>
+          <UiBoxPerfil class="mt-personalizado" @onClick="scrollToContact" />
         </div>
 
-        <div class="col-12 col-sm-4 col-md-6" :class="`${$q.screen.md ? 'hidden' : ''}`">
-
-        </div>
+        <div
+          class="col-12 col-sm-4 col-md-6"
+          :class="`${$q.screen.md ? 'hidden' : ''}`"
+        ></div>
 
         <div class="profile">
           <UiImageProfile />
@@ -22,42 +25,62 @@
       </div>
     </section>
 
-
     <section class="row justify-center q-mt-xl">
-      <div class="col-12 col-md-8">
+      <div class="col-12 col-md-9">
         <div class="padding-x full-width text-center">
-          <hr style="max-width: 1110px;" />
+          <hr style="max-width: 1110px" />
         </div>
       </div>
 
-      <div class="col-12 col-md-8 container">
+      <div class="col-12 col-md-9 container">
         <UiCardTechnologiesExpirience :skils="skils" />
       </div>
-
     </section>
 
-    <section class="row justify-center" style="position: relative; margin-top: 128px; margin-bottom: 139px;">
-      <div class="col-12 col-md-8 container q-mb-xl">
+    <section
+      class="row justify-center"
+      style="position: relative; margin-top: 128px; margin-bottom: 139px"
+    >
+      <div class="col-12 col-md-9 container q-mb-xl">
         <div class="row items-center justify-between padding-x">
           <p class="title q-mb-none">Projects</p>
           <UiButton text="Contact Me" @onClick="scrollToContact" />
         </div>
       </div>
 
-      <div class="col-12 col-md-8 container padding-x row" :class="`${ $q.screen.xs ? ' justify-center' : 'justify-between'}`" style="display: flex; gap: 18px;">
-        <UiCardProjects v-for="(project, index) in projects" :name="project.name" :img="project.img"
-          :tecnologies="project.tecnologies" :link="project.link" :key="index" />
+      <div
+        class="col-12 col-md-9 container padding-x row justify-center"
+        style="display: flex; gap: 18px"
+      >
+        <div
+          style="max-width: 950px; gap: 20px"
+          class="row"
+          :class="`${$q.screen.sm ? ' justify-center' : 'justify-between'}`"
+        >
+          <UiCardProjects
+            v-for="(project, index) in projects"
+            :name="project.name"
+            :img="project.img"
+            :tecnologies="project.tecnologies"
+            :link="project.link"
+            :key="index"
+          />
+        </div>
       </div>
     </section>
 
-    <footer id="contact" class="row justify-center" style="position: relative; background: var(--Dark-Grey, #242424);">
+    <footer
+      id="contact"
+      class="row justify-center"
+      style="position: relative; background: var(--Dark-Grey, #242424)"
+    >
       <div class="decor-left-contact"></div>
-      <div class="col-12 col-md-8 container row">
+      <div class="col-12 col-md-9 container row">
         <UiContact />
 
         <div class="col-12">
           <div class="padding-x full-width text-center q-mt-xl">
-            <hr style="max-width: 1110px;" />
+            <hr style="max-width: 1110px" />
             <div class="row justify-between">
               <p class="text-white name-header q-mt-md">jasoncosta</p>
 
@@ -104,6 +127,14 @@ const skils: Array<ISkills> = [
     exprience: 3,
   },
   {
+    technologie: "Angular",
+    exprience: 1,
+  },
+  {
+    technologie: "ReactJS",
+    exprience: 1,
+  },
+  {
     technologie: "C#",
     exprience: 1,
   },
@@ -121,7 +152,7 @@ const projects: Array<IProject> = [
   {
     img: new URL(
       "../core/assets/images/linklearn.jpg",
-      import.meta.url
+      import.meta.url,
     ).toString(),
     name: "Link&Learn",
     tecnologies: ["REACT", "Javascript", "NodeJS"],
@@ -133,7 +164,7 @@ const projects: Array<IProject> = [
   {
     img: new URL(
       "../core/assets/images/hero-hairdresses.png",
-      import.meta.url
+      import.meta.url,
     ).toString(),
     name: "Hero HairDresses",
     tecnologies: ["REACT", "Javascript", "NodeJS"],
@@ -144,7 +175,7 @@ const projects: Array<IProject> = [
   {
     img: new URL(
       "../core/assets/images/tictactoe.jpg",
-      import.meta.url
+      import.meta.url,
     ).toString(),
     name: "Tic Tac Toe",
     tecnologies: ["VueJS", "Tipescript", "Quasar"],
@@ -156,7 +187,7 @@ const projects: Array<IProject> = [
   {
     img: new URL(
       "../core/assets/images/pokedex.jpg",
-      import.meta.url
+      import.meta.url,
     ).toString(),
     name: "Pokedex",
     tecnologies: ["Blazor", "ASP.NET", "Tailwind"],
@@ -168,17 +199,19 @@ const projects: Array<IProject> = [
 ];
 
 const scrollToContact = () => {
-  const section = document.getElementById('contact');
+  const section = document.getElementById("contact");
   if (section) {
-    section.scrollIntoView({ behavior: 'smooth' });
+    section.scrollIntoView({ behavior: "smooth" });
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
 %text {
   color: var(--White, #fff);
-  font-feature-settings: "liga" off, "clig" off;
+  font-feature-settings:
+    "liga" off,
+    "clig" off;
   font-family: "Space Grotesk";
 }
 
@@ -251,7 +284,7 @@ const scrollToContact = () => {
   font-style: normal;
   font-weight: 500;
   line-height: 28px;
-  color: var(--Grey, #D9D9D9);
+  color: var(--Grey, #d9d9d9);
 }
 
 .mt-personalizado {
@@ -283,9 +316,7 @@ const scrollToContact = () => {
   }
 }
 
-
 @media (max-width: $breakpoint-sm) {
-
   .info-perfil {
     padding-left: 32px;
   }
@@ -296,10 +327,7 @@ const scrollToContact = () => {
   }
 }
 
-
-
 @media (max-width: $breakpoint-xs) {
-
   .container {
     padding-left: 0px;
   }
