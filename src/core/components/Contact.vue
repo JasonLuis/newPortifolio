@@ -33,7 +33,7 @@ import UiFormMessage from "~~/src/core/components/FormMessage.vue";
 
 .text {
     @extend %text;
-    max-width: 445px;
+    max-width: 420px;
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
