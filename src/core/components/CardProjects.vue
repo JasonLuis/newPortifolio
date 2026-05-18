@@ -77,6 +77,7 @@ const img = computed(() => {
   width: 540px;
   height: 487px;
   background-color: transparent;
+  margin-bottom: 8px;
 
   &:deep(.image) {
     max-height: 400px;
