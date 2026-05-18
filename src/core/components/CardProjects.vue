@@ -136,7 +136,7 @@ const img = computed(() => {
   opacity: 0;
 }
 
-@media (max-width: $breakpoint-lg) {
+@media (max-width: $breakpoint-md) {
   .q-card {
     width: 420px;
     height: 400px;

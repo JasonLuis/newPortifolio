@@ -41,7 +41,7 @@
       class="row justify-center"
       style="position: relative; margin-top: 128px; margin-bottom: 139px"
     >
-      <div class="col-12 col-md-9 container q-mb-xl">
+      <div class="col-12 col-md-10 container q-mb-xl">
         <div class="row items-center justify-between padding-x">
           <p class="title q-mb-none">Projects</p>
           <UiButton text="Contact Me" @onClick="scrollToContact" />
@@ -49,13 +49,15 @@
       </div>
 
       <div
-        class="col-12 col-md-9 container padding-x row justify-center"
+        class="col-12 col-md-10 container padding-x row justify-center"
         style="display: flex; gap: 18px"
       >
         <div
-          style="max-width: 950px; gap: 20px"
           class="row"
-          :class="`${$q.screen.sm ? ' justify-center' : 'justify-between'}`"
+          :class="`
+            ${$q.screen.sm || $q.screen.xs ? ' justify-center' : 'justify-between'}
+            `"
+          :style="`${$q.screen.sm ? 'gap: 18px;' : ''}`"
         >
           <UiCardProjects
             v-for="(project, index) in projects"
